@@ -18,6 +18,7 @@ export default function App() {
           </Route>
           <Route> 
             {/* this route should point to a particulat beanie baby by id and render that specific BeanieDetail page */}
+            <BeanieDetail />
           </Route>
         </Switch>
       </div>

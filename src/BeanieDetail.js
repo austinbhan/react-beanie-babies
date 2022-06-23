@@ -5,10 +5,15 @@ import { getSingleBeanie } from './services/fetch-utils';
 export default function BeanieDetail() {
   // you'll need to track the current beanieBaby in state
   // you'll need to get the route param using the appropriate react router hook
+  const [beanieBaby, setBeanieBaby] = useState({}); 
 
   useEffect(() => {
+    async function doFetch() {
+      const data = await getSingleBeanie(Link.id);
+      setBeanieBaby(data);
+    }
+    doFetch();
     // you'll need to define a fetch function here (then call it below) that gets this page's beanie baby and injects it into state using the correct state handler
-
   }, []); // note that you'll want the id from the url in the dependency array because you want the useEffect callback to get called every time the url changes 
 
   function handleBeanieClick() {
@@ -19,7 +24,7 @@ export default function BeanieDetail() {
     <>
       {/* Feel free to uncomment and use the below code--but you'll need to figure out how to keep it from blowing up on load */}
       
-      {/* <Link to='/'>Home</Link>
+      <Link to='/'>Home</Link>
       <div className='beanie-detail' onClick={handleBeanieClick}>
         <div className='beanie-data'>
           <p>{beanieBaby.animal}</p>
@@ -38,7 +43,7 @@ export default function BeanieDetail() {
           <p>Swing Tag Generation: {beanieBaby.swingTagGeneration}</p>
           <p>Tush Tag Generation: {beanieBaby.tushTagGeneration}</p>
         </div>
-      </div>   */}
+      </div>  
     </>
   );
 }
